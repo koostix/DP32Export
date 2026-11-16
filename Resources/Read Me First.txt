@@ -1,0 +1,91 @@
+DP-32 Export
+============
+
+Exports songs from a Tascam DP-32SD as one WAV file per track, every file
+starting at the beginning of the song, so they line up when you drop them into
+any DAW at the same point. You do not need to run Audio Depot export on the unit.
+
+
+PLEASE READ: USE AT YOUR OWN RISK
+---------------------------------
+
+DP-32 Export is free, open-source software provided "AS IS", WITHOUT WARRANTY
+OF ANY KIND. The author accepts NO LIABILITY for lost, damaged or incorrect
+recordings, cards, files or anything else. You use it entirely at your own risk.
+
+BACK UP YOUR CARDS FIRST. Before using this app, copy the whole SD card (or at
+least the MUSIC folder) to your Mac or another drive, and keep that copy.
+
+The app only ever reads the card and never writes to it, but software can have
+bugs, cards can fail, and the DP-32SD's file format was worked out without help
+from Tascam. Always listen to your exported files before deleting anything from
+the card or the unit.
+
+DP-32 Export is not made, endorsed or supported by TEAC or Tascam. "Tascam" and
+"DP-32SD" are trademarks of TEAC Corporation, used here only to say what the app
+works with.
+
+
+INSTALL
+-------
+
+1. Drag "DP32 Export" onto the Applications folder in this window.
+2. Open it from Applications. macOS will say it cannot check the app, because
+   it is not notarized by Apple. Click Done (or Cancel).
+3. Open System Settings > Privacy & Security, scroll down, and click
+   "Open Anyway" next to DP32 Export. Confirm.
+4. The first time it reads the card or saves to your Desktop, macOS asks for
+   permission. Click Allow.
+
+Needs macOS 13 (Ventura) or later. Works on Apple Silicon and Intel Macs.
+
+
+USE
+---
+
+1. Connect the DP-32SD by USB in storage mode, or put its SD card in a card
+   reader. The app finds it on its own. You can also click "Open Folder..." to
+   pick a song folder that you copied to your Mac.
+2. Each song shows its format, length and tracks, and either "Ready" or the
+   reason it cannot be exported. The app refuses any song it cannot read with
+   certainty rather than guess.
+3. Choose where exports go ("Change..."). The default is
+   Desktop/Depot Lift Exports. Each song gets its own new folder; nothing is
+   ever overwritten.
+4. Click "Export All", or select songs and click "Export Selected".
+5. Click "Reveal in Finder" to see the files.
+
+Each export folder holds:
+  - {song}_TRK01.WAV, {song}_TRK02.WAV ...   one mono WAV per track
+  - {song}_TRK01_V1.WAV, _V2 ...             when a track has more than one
+                                             virtual track with audio
+  - {song}.WAV and {song}_z.WAV              the stereo master and previous
+                                             master, when the song has them
+  - Export Report.txt                        tracks, lengths and any warnings
+
+"Pad every stem to the song length" makes every file the same length.
+
+
+HOW CLOSE IS IT TO THE UNIT'S OWN EXPORT?
+-----------------------------------------
+
+Audio is copied bit for bit. The unit's 10 ms fades at the start and end of
+each recorded clip are reproduced. Compared with a real DP-32SD export of a
+nine-track song, 7 samples in 48 million differed, each by the smallest possible
+amount (1 LSB), which is inaudible. Some situations have not been compared with
+the unit yet (gaps between clips, punch-ins, clones, undo, 16-bit songs); when a
+song has one, the export report says so.
+
+
+COMMAND-LINE TOOL
+-----------------
+
+The "Command Line Tool" folder holds dp32export, which does the same from
+Terminal. Run it with no arguments for help.
+
+
+SOURCE, ISSUES, LICENSE
+-----------------------
+
+https://github.com/koostix/DP32Export
+MIT License. See License.txt.

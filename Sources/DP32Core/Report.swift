@@ -49,6 +49,10 @@ public enum Report {
         lines.append("  export available (24-bit / 48 kHz, 48 million samples) 7 samples differed, each by")
         lines.append("  1 LSB, all inside those fades. See docs/FORMAT.md in the DP32Export project.")
         lines.append("")
+        lines.append("Provided as is, without warranty. Use at your own risk; keep a backup of your card")
+        lines.append("and listen to these files before deleting anything from it.")
+        lines.append("https://github.com/koostix/DP32Export")
+        lines.append("")
         return lines.joined(separator: "\n")
     }
 }

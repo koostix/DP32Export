@@ -1,4 +1,12 @@
+<p align="center"><img src="Resources/AppIcon.png" width="160" alt="DP32 Export icon"></p>
+
 # DP32Export
+
+> **Use at your own risk. Back up your cards first.** DP32Export is free software
+> provided as is, without warranty of any kind, and the author accepts no liability
+> for lost, damaged or incorrect recordings. It only ever reads the card, but copy
+> the whole card somewhere safe before you use it, and listen to your exports
+> before deleting anything. Not affiliated with or endorsed by TEAC or Tascam.
 
 Exports songs from a Tascam DP-32SD card (or a song folder copied to the Mac) as
 time-aligned mono WAV stems, without running the unit's Audio Depot export. The
@@ -10,25 +18,27 @@ start at time zero, plus the stereo master `{song}.WAV`, the previous master
 
 ## Download
 
-Get `DP32Export-<version>-macOS.zip` from
-[Releases](https://github.com/koostix/DP32Export/releases). It holds the app and the
-`dp32export` CLI, for Apple Silicon and Intel, macOS 13 or later.
+Get **`DP32Export-<version>.dmg`** from
+[Releases](https://github.com/koostix/DP32Export/releases), open it and drag
+**DP32 Export** to Applications. Apple Silicon and Intel, macOS 13 or later. The DMG
+also holds `Read Me First.txt` (install, use, and the disclaimer), the license and
+the `dp32export` command-line tool.
 
-The app is ad-hoc signed, not notarized. After unzipping, open it once, then go to
-**System Settings → Privacy & Security** and click **Open Anyway**, or run
-`xattr -dr com.apple.quarantine "DP32 Export.app"`.
+The app is ad-hoc signed, not notarized. Open it once, then go to
+**System Settings → Privacy & Security** and click **Open Anyway**.
 
 ## Build from source
 
 ```sh
 sh scripts/build-and-open.sh      # builds, ad-hoc signs build/DP32 Export.app, opens it
-sh scripts/package.sh --universal # app + CLI zip for Apple Silicon and Intel (needs Xcode)
+sh scripts/package.sh --universal # DMG + zip for Apple Silicon and Intel (needs Xcode)
 swift test                        # parser, refusals, fade vectors, end-to-end render
 sh scripts/compare-hardware.sh <folder>   # needs a song folder plus the unit's own _TRKnn.WAV export of it
 ```
 
-Needs Xcode or the Swift toolchain (Swift 5.9+), macOS 13+. Pushing a `v*` tag
-builds and publishes a release through GitHub Actions.
+Needs Xcode or the Swift toolchain (Swift 5.9+), macOS 13+. Pushing a `v*` tag, or
+running the Release workflow by hand with a version, builds the DMG and publishes a
+GitHub release.
 
 The first time the app reads the card or writes to the Desktop, macOS asks for
 permission. Allow it.
@@ -60,7 +70,8 @@ build/dp32export compare <exported folder> <hardware folder> [--ignore-head FILE
 - `Sources/DP32ExportApp` — the SwiftUI app.
 - `Tests/DP32CoreTests` — synthetic `edltable.sys` builder, refusal tests, fade
   vectors read from the hardware export, end-to-end renders.
-- `scripts/` — build, package, and hardware comparison.
+- `scripts/` — build, package (DMG), and hardware comparison.
+- `Resources/` — the app icon and the end-user `Read Me First.txt` that goes in the DMG.
 - `tools/reference.py` — an independent Python implementation used to work out
   and cross-check the format (`python3 tools/reference.py compare <song> <hardware folder>`).
 - `docs/FORMAT.md` — the format, the fade arithmetic, and what is still unknown.
@@ -81,9 +92,12 @@ byte-identical; 7 samples out of 48,190,400 differ, each by 1 LSB, all inside
 
 ## Disclaimer
 
-Not affiliated with or endorsed by TEAC or Tascam. The format was worked out by
-reading song folders; nothing in this project writes to a card. Keep your own
-backup of the card anyway.
+Provided as is, without warranty of any kind; see `LICENSE`. The author accepts no
+liability for lost, damaged or incorrect recordings, cards or files. Back up your
+cards before use. The DP-32SD format was worked out by reading song folders, without
+documentation from Tascam; nothing in this project writes to a card. Not affiliated
+with or endorsed by TEAC or Tascam; "Tascam" and "DP-32SD" are trademarks of TEAC
+Corporation.
 
 ## License
 

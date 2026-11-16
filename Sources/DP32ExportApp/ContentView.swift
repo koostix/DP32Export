@@ -37,6 +37,9 @@ struct ContentView: View {
                      : "\(model.rows.count) songs. The card is only ever read.")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                Text("Use at your own risk. Back up your card before exporting.")
+                    .font(.caption)
+                    .foregroundColor(.orange)
             }
             Spacer()
             Button("Open Folder…") { model.openFolder() }

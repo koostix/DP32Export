@@ -1,13 +1,17 @@
-Read-only stem export for Tascam DP-32SD songs. The zip holds **DP32 Export.app**,
-the `dp32export` command-line tool, the README and the license. Apple Silicon and Intel, macOS 13 or later.
+Exports Tascam DP-32SD songs as time-aligned mono WAV stems, one per track, without
+running Audio Depot export on the unit. The card is only ever read.
 
-**First launch:** the app is ad-hoc signed, not notarized by Apple. After unzipping,
-open it once, then go to **System Settings → Privacy & Security** and click
-**Open Anyway**. Or, in Terminal:
+**Download `DP32Export-<version>.dmg`**, open it, and drag **DP32 Export** to
+Applications. Apple Silicon and Intel, macOS 13 or later. The DMG also holds
+**Read Me First.txt**, the license, and the `dp32export` command-line tool.
 
-```sh
-xattr -dr com.apple.quarantine "DP32 Export.app"
-```
+**First launch:** the app is not notarized by Apple. Open it once, then go to
+**System Settings → Privacy & Security** and click **Open Anyway**.
 
-See the README for what it does and `docs/FORMAT.md` for how the DP-32SD format
-was worked out and what is still unverified.
+> **Use at your own risk. Back up your cards first.** This is free software
+> provided as is, without warranty of any kind; the author accepts no liability
+> for lost or damaged recordings. Listen to your exports before deleting anything
+> from the card. Not affiliated with or endorsed by TEAC or Tascam.
+
+See the README for details and `docs/FORMAT.md` for how the format was worked out
+and what has not yet been compared with the unit's own export.
